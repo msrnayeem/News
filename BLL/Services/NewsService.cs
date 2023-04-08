@@ -21,11 +21,10 @@ namespace BLL.Services
             var data = NewsRepo.Get(id);
             return Convert(data);
         }
-        public static bool Add(News news)
+        public static bool Add(NewsDTO news)
         {
-            
-           return NewsRepo.Add(news);
-           
+            var data = Convert(news);
+            return NewsRepo.Add(data);
         }
         public static bool Update(News news)
         {

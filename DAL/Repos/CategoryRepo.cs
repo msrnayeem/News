@@ -22,21 +22,24 @@ namespace DAL.Repos
         {
             return db.Categories.Find(id);
         }
-        public static void Add(Category category)
+        public static bool Add(Category category)
         {
             db.Categories.Add(category);
-            db.SaveChanges();
+           return db.SaveChanges() > 0;
         }
-        public static void Update(Category category)
+        public static bool Update(Category category)
         {
-            db.Entry(category).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            var exemp = Get(category.Id);
+            db.Entry(exemp).CurrentValues.SetValues(category);
+            return db.SaveChanges() > 0;
         }
-        public static void Delete(int id)
+        public static bool Delete(int id)
         {
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category);
-            db.SaveChanges();
+            return db.SaveChanges() > 0;
         }
+
+        
     }
 }

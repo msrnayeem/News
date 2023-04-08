@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using BLL.DTOs;
+using DAL.Models;
 using DAL.Repos;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,51 @@ namespace BLL.Services
 {
     public class CategoryService
     {
-        public static List<Category> GetAll()
+        public static List<CategoryDTO> GetAll()
         {
-            return CategoryRepo.GetAll();
+            var data = CategoryRepo.GetAll();
+            return Convert(data);
         }
         public static Category Get(int id)
         {
             return CategoryRepo.Get(id);
         }
-        public static void Add(Category category)
+        public static bool Add(CategoryDTO category)
         {
-            CategoryRepo.Add(category);
+            var data = Convert(category);
+            return CategoryRepo.Add(data);
+            
         }
-        public static void Update(Category category)
+        public static bool Update(CategoryDTO category)
         {
-            CategoryRepo.Update(category);
+            var data = Convert(category);
+            return CategoryRepo.Update(data);
         }
-        public static void Delete(int id)
+        public static bool Delete(int id)
         {
-            CategoryRepo.Delete(id);
+            return CategoryRepo.Delete(id);
+        }
+
+        static CategoryDTO Convert(Category category)
+        {
+            return new CategoryDTO()
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
+        }
+        static Category Convert(CategoryDTO category)
+        {
+            return new Category()
+            {
+                Id = category.Id,
+                Name = category.Name
+            };
+        }
+
+        static List<CategoryDTO> Convert(List<Category> category)
+        {
+            return category.Select(x => Convert(x)).ToList();
         }
     }
 }
