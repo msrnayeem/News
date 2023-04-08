@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using BLL.DTOs;
+using DAL.Models;
 using DAL.Repos;
 using System;
 using System.Collections.Generic;
@@ -10,25 +11,59 @@ namespace BLL.Services
 {
     public class NewsService
     {
-        public static List<News> GetAll()
+        public static List<NewsDTO> GetAll()
         {
-            return NewsRepo.GetAll();
+            var data = NewsRepo.GetAll();
+            return Convert(data);
         }
-        public static News Get(int id)
+        public static NewsDTO Get(int id)
         {
-            return NewsRepo.Get(id);
+            var data = NewsRepo.Get(id);
+            return Convert(data);
         }
-        public static void Add(News news)
+        public static bool Add(News news)
         {
-            NewsRepo.Add(news);
+            
+           return NewsRepo.Add(news);
+           
         }
-        public static void Update(News news)
+        public static bool Update(News news)
         {
-            NewsRepo.Update(news);
+            return NewsRepo.Update(news);
         }
-        public static void Delete(int id)
+        public static bool Delete(int id)
         {
-            NewsRepo.Delete(id);
+            return NewsRepo.Delete(id);
+        }
+
+
+
+        static NewsDTO Convert(News news)
+        {
+            return new NewsDTO()
+            {
+                Id = news.Id,
+                Title = news.Title,
+                Description = news.Description,
+                Date = news.Date,
+                CategoryId = news.CategoryId
+            };
+        }
+
+        static News Convert(NewsDTO news)
+        {
+            return new News()
+            {
+                Id = news.Id,
+                Title = news.Title,
+                Description = news.Description,
+                Date = news.Date,
+                CategoryId = news.CategoryId
+            };
+        }
+        static List<NewsDTO> Convert(List<News> news)
+        {
+            return news.Select(x => Convert(x)).ToList();
         }
     }
 }

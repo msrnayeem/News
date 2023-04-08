@@ -22,21 +22,21 @@ namespace DAL.Repos
         {
             return db.News.Find(id);
         }
-        public static void Add(News news)
+        public static bool Add(News news)
         {
             db.News.Add(news);
-            db.SaveChanges();
+            return db.SaveChanges() > 0;
         }
-        public static void Delete(int id)
+        public static bool Delete(int id)
         {
             News news = db.News.Find(id);
             db.News.Remove(news);
-            db.SaveChanges();
+           return  db.SaveChanges() > 0;
         }
-        public static void Update(News news)
+        public static bool Update(News news)
         {
             db.Entry(news).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
+            return db.SaveChanges() > 0;
         }
     }
 }
