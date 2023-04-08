@@ -1,0 +1,14 @@
+D:\FinalDotNet\Assignment\DAL\bin\Debug\DAL.dll.config
+D:\FinalDotNet\Assignment\DAL\bin\Debug\DAL.dll
+D:\FinalDotNet\Assignment\DAL\bin\Debug\DAL.pdb
+D:\FinalDotNet\Assignment\DAL\bin\Debug\EntityFramework.dll
+D:\FinalDotNet\Assignment\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\FinalDotNet\Assignment\DAL\bin\Debug\EntityFramework.xml
+D:\FinalDotNet\Assignment\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\FinalDotNet\Assignment\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\FinalDotNet\Assignment\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\FinalDotNet\Assignment\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\FinalDotNet\Assignment\DAL\obj\Debug\DAL.dll
+D:\FinalDotNet\Assignment\DAL\obj\Debug\DAL.pdb
+D:\FinalDotNet\Assignment\DAL\obj\Debug\DAL.Migrations.NewsCategory.resources
+D:\FinalDotNet\Assignment\DAL\obj\Debug\DAL.csproj.GenerateResource.cache
